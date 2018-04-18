@@ -38,25 +38,11 @@
 
         <table width="80%" border="1" bordercolordark="#000000" bordercolorlight="#FFFFFF" cellpadding="3" cellspacing="0">
         
-
-
-            <%
-            int index = 0;
-            for(Product product : products) {
-            %>
-            
             <tr>
-                
-            <%
-                if (index == 0) {
-            %>
-            
-                <td rowspan="<%=products.size()%>" width="20%" valign="center" align="middle">
-                    <table border="1" bordercolordark="#000000" bordercolorlight="#FFFFFF" cellpadding="3" cellspacing="0">
+                <td>
+                    <table width="100%" border="1" bordercolordark="#000000" bordercolorlight="#FFFFFF" cellpadding="3" cellspacing="0">
                         <%
-
                         for(Category category : categories){
-
                         %>
 
                         <tr>
@@ -70,32 +56,36 @@
                        <% } %>
                     </table>
                 </td>
-            <% } %>
+                <td>
+                    <table width="100%" border="1" bordercolordark="#000000" bordercolorlight="#FFFFFF" cellpadding="3" cellspacing="0">
+                        <%
+                            int index = 0;
+                            for(Product product : products) {
+                        %>
+                        <tr>
+                            <td valign="center" align="middle">
+                            <img src="img/products/<%=product.getName()%>.png"
+                                 alt="<%=product.getName()%>" />
+                            </td>
 
-                <td valign="center" align="middle">
-                        <img src="img/products/<%=product.getName()%>.png"
-                             alt="<%=product.getName()%>" />
+                            <td valign="center" align="middle">
+                                <%=product.getName()%>
+                            </td>
+
+                            <td valign="center" align="middle">
+                                    <%=product.getPrice()%>&#8364;
+                            </td>
+
+                            <td valign="center" align="middle">
+                                Add to cart
+                            </td>
+                        </tr>
+                        <% } %>
+                    </table>
                 </td>
-                
-                <td valign="center" align="middle">
-                    <%=product.getName()%>
-                </td>
-                
-                <td valign="center" align="middle">
-                        <%=product.getPrice()%>&#8364;
-                </td>
-                
-                <td valign="center" align="middle">
-                    Add to cart
-                </td>
+            </tr>
 
-            
-           </tr>
-
-           <% index += 1; } %>
-
-        
-
+          
         </table>
 
     </body>
