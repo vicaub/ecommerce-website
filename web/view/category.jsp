@@ -1,3 +1,4 @@
+<%@page import="cart.ShoppingCart"%>
 <%@page import="entity.Product"%>
 <%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%@ page import="entity.Category" %>
@@ -25,12 +26,17 @@
             }
         }
         List<Product> products = (List<Product>) request.getAttribute("products");
+        
+        ShoppingCart shoppingCart =  (ShoppingCart) request.getAttribute("shoppingCart");
         %>
 
         <h3> Products of <%=selectedCategory.getName()%> </h3>
-        
+
         <img src="img/cart.gif"/>
-        0 items
+        <%=shoppingCart.getNumberOfItems()%> items
+        <% if (shoppingCart.getNumberOfItems() > 0) { %>
+        <a href="viewcart.do">View Cart</a>
+        <% } %>
         
         <br/><br/>
 
@@ -77,7 +83,7 @@
                             </td>
 
                             <td width="25%" valign="center" align="middle">
-                                <button type="button" onclick="window.location.href=''"> Add to cart </button>
+                                <button type="button" onclick="window.location.href='neworder.do?productid=<%=product.getId()%>&categoryid=<%=selectedCategory.getId()%>'"> Add to cart </button>
                             </td>
                         </tr>
                         <% } %>

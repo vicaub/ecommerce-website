@@ -5,10 +5,13 @@
  */
 package web.action;
 
+import cart.ShoppingCart;
+import entity.Product;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.CategoryModel;
 import model.ProductModel;
+import web.ViewManager;
 
 /**
  *
@@ -16,17 +19,23 @@ import model.ProductModel;
  */
 public class updatecartAction extends Action {
     
-    CategoryModel categoryModel;
-    ProductModel productModel;
+    private ShoppingCart shoppingCart;
+    private ProductModel productModel;
 
-    public updatecartAction(CategoryModel categoryModel, ProductModel productModel) {
-        this.categoryModel = categoryModel;
+    public updatecartAction(ShoppingCart shoppingCart, ProductModel productModel) {
+        this.shoppingCart = shoppingCart;
         this.productModel = productModel;
     }
-
+    
     @Override
     public void perform(HttpServletRequest req, HttpServletResponse resp) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int quantity = (int) Integer.parseInt(req.getParameter("quantity"));
+        int productid =  (int) Integer.parseInt(req.getParameter("productid"));
+        Product product = productModel.retrieveFromId(productid);
+        
+        shoppingCart.update(product, quantity);
+        req.setAttribute("shoppingCart", shoppingCart);
+        ViewManager.nextView(req, resp, "/view/cart.jsp");
     }
     
 }

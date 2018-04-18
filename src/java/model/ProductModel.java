@@ -36,5 +36,11 @@ public class ProductModel {
         q.setParameter("category", category);
         return q.getResultList();
     }
+    
+    public Product retrieveFromId(int id) {
+        Product c;
+        c = em.find(Product.class, id);
+        return c;
+    }
 
 }

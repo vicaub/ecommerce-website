@@ -15,22 +15,28 @@ import entity.Product;
  * @author juanluis
  */
 public class ShoppingCartItem {
+    
+    private Product product;
+    private int quantity;
 
     public ShoppingCartItem(Product product) {
+        this.product = product;
+        quantity = 1;
     };
     
     public Product getProduct() {
-        return null;
+        return product;
     };
     
     public int getQuantity() {
-        return 0;
+        return quantity;
     };
     
     public void setQuantity(int quantity) {
+        this.quantity = quantity;
     };
     
     public double getTotal() {
-        return 0;
+        return quantity * product.getPrice();
     };
 }

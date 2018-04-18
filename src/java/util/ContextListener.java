@@ -1,5 +1,6 @@
 package util;
 
+import cart.ShoppingCart;
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -33,9 +34,11 @@ public class ContextListener implements ServletContextListener, HttpSessionListe
 
             CategoryModel categoryModel = new CategoryModel(em, utx);
             ProductModel productModel = new ProductModel(em, utx);
+            ShoppingCart shoppingCart = new ShoppingCart();
             
             context.setAttribute("categoryModel", categoryModel);
             context.setAttribute("productModel", productModel);
+            context.setAttribute("shoppingCart", shoppingCart);
         }
         catch (Exception ex) {
             ex.printStackTrace();

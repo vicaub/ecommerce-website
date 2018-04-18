@@ -1,5 +1,6 @@
 package web;
 
+import cart.ShoppingCart;
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -26,13 +27,17 @@ public class ControllerServlet extends HttpServlet {
         ServletContext context = getServletContext();
 
         actionMap.put("/init.do", new initAction((CategoryModel) context.getAttribute("categoryModel")));
-        actionMap.put("/category.do", new categoryAction((CategoryModel) context.getAttribute("categoryModel"),(ProductModel) context.getAttribute("productModel")));
-        actionMap.put("/neworder.do", new neworderAction((CategoryModel) context.getAttribute("categoryModel"),(ProductModel) context.getAttribute("productModel")));
-//        actionMap.put("/viewcart.do", new viewcartAction());
-//        actionMap.put("/updatecart.do", new updatecartAction((ProductModel) context.getAttribute("productModel")));
-//        actionMap.put("/clearcart.do", new clearcartAction());
-//        actionMap.put("/checkout.do", new checkoutAction());
-
+        actionMap.put("/category.do", new categoryAction((CategoryModel) context.getAttribute("categoryModel"),
+                (ProductModel) context.getAttribute("productModel"),
+                (ShoppingCart) context.getAttribute("shoppingCart")
+        ));
+        actionMap.put("/neworder.do", new neworderAction((ShoppingCart) context.getAttribute("shoppingCart"),
+                (ProductModel) context.getAttribute("productModel"),
+                (CategoryModel) context.getAttribute("categoryModel")));
+        actionMap.put("/viewcart.do", new viewcartAction((ShoppingCart) context.getAttribute("shoppingCart")));
+        actionMap.put("/updatecart.do", new updatecartAction((ShoppingCart) context.getAttribute("shoppingCart"),
+                (ProductModel) context.getAttribute("productModel")));
+        actionMap.put("/clearcart.do", new clearcartAction((ShoppingCart) context.getAttribute("shoppingCart")));
     }
 
     @Override

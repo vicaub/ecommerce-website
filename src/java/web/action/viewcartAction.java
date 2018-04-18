@@ -5,10 +5,12 @@
  */
 package web.action;
 
+import cart.ShoppingCart;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.CategoryModel;
 import model.ProductModel;
+import web.ViewManager;
 
 /**
  *
@@ -16,17 +18,16 @@ import model.ProductModel;
  */
 public class viewcartAction extends Action {
     
-    CategoryModel categoryModel;
-    ProductModel productModel;
+    private ShoppingCart shoppingCart;
 
-    public viewcartAction(CategoryModel categoryModel, ProductModel productModel) {
-        this.categoryModel = categoryModel;
-        this.productModel = productModel;
+    public viewcartAction(ShoppingCart shoppingCart) {
+        this.shoppingCart = shoppingCart;
     }
 
     @Override
     public void perform(HttpServletRequest req, HttpServletResponse resp) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        req.setAttribute("shoppingCart", shoppingCart);
+        ViewManager.nextView(req, resp, "/view/cart.jsp");
     }
     
 }
