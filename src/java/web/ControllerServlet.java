@@ -27,7 +27,7 @@ public class ControllerServlet extends HttpServlet {
 
         actionMap.put("/init.do", new initAction((CategoryModel) context.getAttribute("categoryModel")));
         actionMap.put("/category.do", new categoryAction((CategoryModel) context.getAttribute("categoryModel"),(ProductModel) context.getAttribute("productModel")));
-//        actionMap.put("/neworder.do", new neworderAction((CategoryModel) context.getAttribute("categoryModel"),(ProductModel) context.getAttribute("productModel")));
+        actionMap.put("/neworder.do", new neworderAction((CategoryModel) context.getAttribute("categoryModel"),(ProductModel) context.getAttribute("productModel")));
 //        actionMap.put("/viewcart.do", new viewcartAction());
 //        actionMap.put("/updatecart.do", new updatecartAction((ProductModel) context.getAttribute("productModel")));
 //        actionMap.put("/clearcart.do", new clearcartAction());

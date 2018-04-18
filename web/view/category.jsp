@@ -77,7 +77,7 @@
                             </td>
 
                             <td width="25%" valign="center" align="middle">
-                                <button type="button"> Add to cart </button>
+                                <button type="button" onclick="window.location.href=''"> Add to cart </button>
                             </td>
                         </tr>
                         <% } %>
