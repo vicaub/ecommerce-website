@@ -30,9 +30,7 @@
         <h3> Products of <%=selectedCategory.getName()%> </h3>
         
         <img src="img/cart.gif"/>
-        <span>
-            0 items
-        </span>
+        0 items
         
         <br/><br/>
 
@@ -63,21 +61,23 @@
                             for(Product product : products) {
                         %>
                         <tr>
-                            <td valign="center" align="middle">
+                            <td width="25%" valign="center" align="middle">
                             <img src="img/products/<%=product.getName()%>.png"
                                  alt="<%=product.getName()%>" />
                             </td>
 
-                            <td valign="center" align="middle">
-                                <%=product.getName()%>
+                            <td width="25%" valign="center" align="middle">
+                                <b> <%=product.getName()%> </b>
+                                <br/><br/>
+                                <%=product.getDescription()%>
                             </td>
 
-                            <td valign="center" align="middle">
-                                    <%=product.getPrice()%>&#8364;
+                            <td width="25%" valign="center" align="middle">
+                                <%=String.format("%.2f", product.getPrice())%> &#8364;
                             </td>
 
-                            <td valign="center" align="middle">
-                                Add to cart
+                            <td width="25%" valign="center" align="middle">
+                                <button type="button"> Add to cart </button>
                             </td>
                         </tr>
                         <% } %>
