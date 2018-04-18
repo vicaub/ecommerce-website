@@ -28,7 +28,13 @@
         %>
 
         <h3> Products of <%=selectedCategory.getName()%> </h3>
-
+        
+        <img src="img/cart.gif"/>
+        <span>
+            0 items
+        </span>
+        
+        <br/><br/>
 
         <table width="80%" border="1" bordercolordark="#000000" bordercolorlight="#FFFFFF" cellpadding="3" cellspacing="0">
         
