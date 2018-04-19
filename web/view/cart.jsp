@@ -62,6 +62,9 @@
             <% } %>
         </table>
         
+        <br/>
+        <br/>
+
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
             <input type="hidden" name="cmd" value="_cart">
             <input type="hidden" name="upload" value="1">
@@ -75,6 +78,9 @@
             <% i += 1;} %>
             <input type="image" src="http://www.paypal.com/fr_XC/i/btn/x-click-but01.gif" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
         </form>
+            
+        
+        <h4>Total amount: <%=String.format("%.2f", shoppingCart.getTotal())%> &#8364</h4>
             
 
     </body>
