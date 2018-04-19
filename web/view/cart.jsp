@@ -27,7 +27,7 @@
         
         <a href="clearcart.do">Clear Cart</a>
         <br/>
-        <a href="init.do">Continue shopping</a>
+        <a href="category.do?categoryid=1">Continue shopping</a>
         
         <br/><br/>
 
@@ -61,5 +61,20 @@
             </tr>
             <% } %>
         </table>
+        
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+            <input type="hidden" name="cmd" value="_cart">
+            <input type="hidden" name="upload" value="1">
+            <input type="hidden" name="business" value="dsit@gmail.com">
+            <input type="hidden" name="currency_code" value="EUR">
+            <%  int i = 1;
+                for (ShoppingCartItem item : shoppingCart.getItems()) { %>
+                    <input type="hidden" name="item_name_<%=i%>" value="<%=item.getProduct().getName()%>">
+                    <input type="hidden" name="amount_<%=i%>" value="<%=item.getProduct().getPrice()%>">
+                    <input type="hidden" name="quantity_<%=i%>" value="<%=item.getQuantity()%>">
+            <% i += 1;} %>
+            <input type="image" src="http://www.paypal.com/fr_XC/i/btn/x-click-but01.gif" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
+        </form>
+            
 
     </body>

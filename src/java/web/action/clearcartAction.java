@@ -26,7 +26,7 @@ public class clearcartAction extends Action {
 
     @Override
     public void perform(HttpServletRequest req, HttpServletResponse resp) throws Exception {
-        shoppingCart = new ShoppingCart();
+        shoppingCart.clear();
         req.setAttribute("shoppingCart", shoppingCart);
         ViewManager.nextView(req, resp, "/view/cart.jsp");
     }
